@@ -5,7 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análisis Avanzado de Instrumentos Financieros</title>
     <style>
-        /* Estilos CSS omitidos por brevedad */
+        :root {
+  --primary-color: #1e2a3a;
+  --secondary-color: #2c3e50;
+  --accent-color: #3498db;
+  --text-color: #ecf0f1;
+  --positive-color: #2ecc71;
+  --negative-color: #e74c3c;
+  --neutral-color: #f39c12;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid var(--accent-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+  color: var(--accent-color);
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button.active {
+  background-color: #2ecc71;
+}
+
+button i {
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+#tradingviewWidget, #argentineDashboard {
+  height: 70vh;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+#argentineDashboard {
+  display: none;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.widget-container {
+  display: flex;
+  gap: 20px;
+  height: 30vh;
+}
+
+#relevantData, #gptAssistant {
+  flex: 1;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+#relevantData:hover, #gptAssistant:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.performance-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.performance-value {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.performance-period {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.positive {
+  color: var(--positive-color);
+}
+
+.negative {
+  color: var(--negative-color);
+}
+
+#gptAssistant {
+  display: flex;
+  flex-direction: column;
+}
+
+#gptAssistantContent {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.currency-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.currency-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.currency-value {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.currency-change {
+  font-size: 0.9em;
+}
+
+.argentina-button {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+  
+  .widget-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #tradingviewWidget, #argentineDashboard {
+    height: 50vh;
+  }
+
+  #relevantData, #gptAssistant {
+    height: 30vh;
+  }
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
